@@ -6,6 +6,6 @@
   <%= f.label :body %>
   <%= f.text_area :body, placeholder: "body" %>
   <%= f.label :tags %>
-  <%= f.text_field :tags_attributes, placeholder: "tags" %>
+  <%= f.text_field :tag_names_array, {value: @post.tag_names_with_commas, placeholder: "tags"} %>
   <%= f.submit "Update Post" %>
 <% end %>

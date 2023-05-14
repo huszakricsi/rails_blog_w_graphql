@@ -6,7 +6,7 @@ describe PostsUpdateService do
   let(:update_attributes) { {body: new_body, title: new_title}}
   context "call" do 
     it "updates a post with tags and attributes" do
-      described_class.call(post.id, update_attributes)
+      described_class.call(post, update_attributes)
       post.reload
       assert_equal post.body, new_body
       assert_equal post.title, new_title

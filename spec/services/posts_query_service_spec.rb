@@ -2,9 +2,9 @@ describe PostsQueryService do
   let(:author) { User.create(username: "Richard", email: "email@email.com", password: "1234567890", password_confirmation: "1234567890") }
   let(:author2) { User.create(username: "Peter", email: "email2@email.com", password: "1234567890", password_confirmation: "1234567890") }
   let(:posts) do
-    [ Post.create(author: author, title: 'Title 1', body: 'Body', tags_attributes: ["its a tag"]),
-      Post.create(author: author2, title: 'Title 2', body: 'Body', tags_attributes: ["its another tag"]),
-      Post.create(author: author, title: 'Title 3', body: 'Body', tags_attributes: ["its a tag"]) ]
+    [ Post.create(author: author, title: 'Title 1', body: 'Body', tag_names_array: ["its a tag"]),
+      Post.create(author: author2, title: 'Title 2', body: 'Body', tag_names_array: ["its another tag"]),
+      Post.create(author: author, title: 'Title 3', body: 'Body', tag_names_array: ["its a tag"]) ]
   end
   context "call" do 
     it "queries posts by author" do

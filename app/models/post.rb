@@ -18,13 +18,13 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :comments
 
   #accepts_nested_attributes_for does not support find_or_create_by
-  def tags_attributes=(attrs)
+  def tag_names_array=(attrs)
     return unless attrs
     existing_tags = attrs.map{|attr| Tag.find_or_create_by(name: attr)}
     self.tags = existing_tags
   end
 
-  def tags_attributes
+  def tag_names_with_commas
     tags.map(&:name).join(',')
   end
 end

@@ -1,12 +1,12 @@
 class PostsDeletionPolicy
   attr_reader :user, :post
 
-  def initialize(user, post)
+  def initialize(user, post = nil)
     @user = user
     @post = post
   end
 
-  def self.delete?(user, post)
+  def self.delete?(user, post = nil)
     new(user, post).delete?
   end
 
@@ -25,7 +25,7 @@ class PostsDeletionPolicy
   end
   
   def is_owner_and_editor?
-    @user.role.to_sym == :editor && @post.author == @user
+    @user.role.to_sym == :editor && @post&.author == @user
   end
 end
   

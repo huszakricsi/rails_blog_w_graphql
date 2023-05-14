@@ -1,12 +1,12 @@
 class PostsUpdatePolicy
   attr_reader :user, :post
 
-  def initialize(user, post)
+  def initialize(user, post = nil)
     @user = user
     @post = post
   end
 
-  def self.update?(user, post)
+  def self.update?(user, post = nil)
     new(user, post).update?
   end
 
@@ -25,7 +25,7 @@ class PostsUpdatePolicy
   end
   
   def is_owner_and_writer?
-    @user.role.to_sym == :writer && @post.author == @user
+    @user.role.to_sym == :writer && @post&.author == @user
   end
 end
   

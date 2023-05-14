@@ -1,15 +1,15 @@
 class PostsDeletionService
-  attr_reader :post_id
+  attr_reader :post
 
-  def initialize(post_id)
-    @post_id = post_id
+  def initialize(post)
+    @post = post
   end
 
-  def self.call(post_id)
-    new(post_id).call
+  def self.call(post)
+    new(post).call
   end
 
   def call
-    Post.find(post_id).destroy
+    post.destroy
   end
 end

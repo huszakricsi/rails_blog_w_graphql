@@ -1,6 +1,6 @@
 describe PostsCreationService do
   let(:author) { User.create(username: "Richard", email: "email@email.com", password: "1234567890", password_confirmation: "1234567890") }
-  let(:post_params) { {body: 'post body', title: 'post title', tags_attributes: [tag_name]} }
+  let(:post_params) { {body: 'post body', title: 'post title', tag_names_array: [tag_name]} }
   let(:tag_name) { "its a tag" }
   context "call" do 
     it "creates a post with tags and attributes" do

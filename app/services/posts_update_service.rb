@@ -1,17 +1,16 @@
 class PostsUpdateService
-  attr_reader :post_id, :post_params
+  attr_reader :post, :post_params
 
-  def initialize(post_id, post_params)
+  def initialize(post, post_params)
     @post_params = post_params
-    @post_id = post_id
+    @post = post
   end
 
-  def self.call(post_id, post_params)
-    new(post_id, post_params).call
+  def self.call(post, post_params)
+    new(post, post_params).call
   end
 
   def call
-    post = Post.find(post_id)
     post.update(post_params)
     post
   end

@@ -20,7 +20,7 @@ To experiment with that code, run `rails c` for an interactive prompt, or launch
 
 You can run tests by: `rspec`.
 
-You can generate test coverage by setting the SIMPLECOV environment variable to true: `SIMPLECOV=true rspec` which should generate an overview of 100% coverage to the 'coverage' folder.
+You can generate test coverage by setting the SIMPLECOV environment variable to true: `SIMPLECOV=true rspec` which generates an overview of test coverage to the 'coverage' folder.
 
 ## Description
 Develop a GraphQL API for a simple blog using Ruby on Rails. The API should allow

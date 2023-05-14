@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   def update
     post = Post.find_by(id_param)
     if PostsUpdatePolicy.update?(current_user, post)
-      PostsUpdateService.call(post.id, normalized_post_params)
+      PostsUpdateService.call(post, normalized_post_params)
       redirect_to edit_post_path_url(post.id)
     end
   end
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   def delete
     post = Post.find_by(id_param)
     if PostsDeletionPolicy.delete?(current_user, post)
-      PostsDeletionService.call(post.id)
+      PostsDeletionService.call(post)
       redirect_to posts_path
     end
   end
@@ -49,12 +49,12 @@ class PostsController < ApplicationController
     normalized_post_params = {}
     normalized_post_params[:title] = post_params[:title]
     normalized_post_params[:body] = post_params[:body]
-    normalized_post_params[:tags_attributes] = post_params[:tags_attributes]&.split(',')
+    normalized_post_params[:tag_names_array] = post_params[:tag_names_array]&.split(',')
     normalized_post_params
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :tags_attributes)
+    params.require(:post).permit(:title, :body, :tag_names_array)
   end
 
   def search_params

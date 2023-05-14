@@ -44,7 +44,7 @@ describe Post do
     end
   
     it "Post creation succeeds with tags" do
-      valid_subject.tags_attributes = ["its a tag"]
+      valid_subject.tag_names_array = ["its a tag"]
       assert valid_subject.valid?
       assert_empty valid_subject.errors
     end
@@ -66,7 +66,7 @@ describe Post do
       valid_subject.tags << tags
       assert valid_subject.valid?
       assert_equal valid_subject.tags, tags
-      assert_equal valid_subject.tags_attributes, tags.map(&:name).join(',')
+      assert_equal valid_subject.tag_names_with_commas, tags.map(&:name).join(',')
     end
   end
 end
