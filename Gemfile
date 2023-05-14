@@ -64,3 +64,14 @@ group :development do
   # gem "spring"
 end
 
+
+gem "graphql", "~> 2.0"
+gem "graphiql-rails", group: :development
+gem "bcrypt"
+gem 'kaminari'
+
+group :test do
+  gem 'simplecov', require: false
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
+end
