@@ -1,0 +1,17 @@
+<%= form_tag posts_path, method: :get do %>
+  <%= label_tag "title:" %>
+  <%= text_field_tag(:title, params[:title], {placeholder: "title"}) %>
+  <%= label_tag "author:" %>
+  <%= select_tag(:author_username, options_for_select(usernames_that_have_posts, params[:author_username]), {include_blank: true, onchange: 'this.form.submit();'}) %>
+  <br>
+  <%= label_tag "tags:" %>
+  <ul>
+  <% tag_names_that_have_posts.each do |tag| %>
+    <li>
+      <%= check_box_tag(:"tag_titles[#{tag}]", 1, params[:tag_titles]&.keys&.include?(tag), onchange: 'this.form.submit();') %>
+      <%= tag %>
+    </li>
+  <% end%>  
+  </ul>
+  <%= submit_tag "Search"%>
+<% end %>

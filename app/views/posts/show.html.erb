@@ -1,0 +1,45 @@
+<td><%= link_to 'Back to posts', posts_path %><td>
+<br>
+<% if PostsUpdatePolicy.update?(current_user, @post)%>
+  <%= link_to 'Edit post', edit_post_path_url(@post.id) %>
+<% end %>
+<br> 
+<% if PostsDeletionPolicy.delete?(current_user, @post)%>
+  <%= form_with url: delete_post_path_url(@post.id), method: :delete do |form| %>
+    <%= form.submit "Delete post", class: "link-button" %>
+  <% end %>
+<% end %>
+<br> 
+<h1><%= @post.title%></h1>
+<br> 
+<h4>
+  Author: 
+  <%= @post.author.username%>
+</h4>
+<h4>
+  Tags: 
+  <%= @post.tags.map(&:name).join(', ') %>
+</h4>
+<%= @post.body%>
+<table class="table table-hover">
+<% if @post.comments.any? %>
+  <tr>
+    <th>Author</th>
+    <th>Comment</th>
+  </tr>
+  <% @post.comments.order("created_at DESC").each do |comment| %>
+    <tr>
+      <td><%= comment.author.username %><td>
+      <td><%= comment.body %><td>
+    </tr>
+  <% end %>
+<% else %>
+  There are no comments yet.
+<% end %>
+</table>
+
+<%= form_with url: comments_path, method: :post do |form| %>
+  <%= form.hidden_field :post_id, value: @post.id %>
+  <%= form.text_area :body, placeholder: "body" %>
+  <%= form.submit "Create comment", class: "link-button" %>
+<% end %>

@@ -1,0 +1,13 @@
+<% if logged_in? %>
+  Hello
+  <%= current_user.username %>
+  <% if PostsCreationPolicy.create?(current_user)%>
+  <%= link_to 'Create new post', new_post_path_url %>
+  <% end %>
+  <%= form_with url: sessions_path, method: :delete do |form| %>
+    <%= form.submit "Sign out", class: "link-button" %>
+  <% end %>
+<% else %>
+  <%= link_to "Log In", login_path %>
+  <%= link_to "Sign Up", signup_path %>
+<% end %>

@@ -1,0 +1,13 @@
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username, placeholder: "username" %>
+  <%= f.label :email %>
+  <%= f.text_field :email, placeholder: "email" %>
+  <%= label_tag "role:" %>
+  <%= select(:user, :role, options_for_select(User.roles.collect{ |u| [u.first, u.first] })) %>
+  <%= f.label :password %>
+  <%= f.password_field :password, placeholder: "Password" %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+  <%= f.submit "Create Account" %>
+<% end %>
