@@ -8,6 +8,10 @@ In order to get the application running you need to do as follows:
 
 - Execute: `bundle install`
 
+## Example data
+
+To load some data for development or experiencing, use `rails db:seed`
+
 ## Usage
 
 To experiment with that code, run `rails c` for an interactive prompt, or launch the application with `rails s`

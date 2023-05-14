@@ -15,6 +15,8 @@ class Post < ApplicationRecord
 
   paginates_per 10
 
+  accepts_nested_attributes_for :comments
+
   #accepts_nested_attributes_for does not support find_or_create_by
   def tags_attributes=(attrs)
     return unless attrs
